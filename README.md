@@ -1,6 +1,6 @@
 # DAI practice
 Exercises for the subject Internet Application Development made with Python + Flask.
-
+***
 In [practica 1](https://github.com/pavocejudo/DAIpractice/tree/master/practica1) there are some programs using python.
 
 In [practica 2](https://github.com/pavocejudo/DAIpractice/tree/master/practica_2) there are 3 programs:
