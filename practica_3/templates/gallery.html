@@ -1,0 +1,84 @@
+{% extends 'index.html' %}
+{% block title%}
+    Gallery
+{%endblock%}
+{%block slider%}
+<meta name="viewport" content="width=device-width">
+<!--<link rel="stylesheet" href="../static/example.css">-->
+
+<!--<link rel="stylesheet" href="../static/font-awesome.min.css">-->
+<style>
+    .slidesjs-pagination {
+        margin: 7px 0 0;
+        float: right;
+        list-style: none;
+      }
+
+    .slidesjs-pagination li {
+        float: left;
+        margin: 0 1px;
+    }
+
+    .slidesjs-pagination li a {
+        display: block;
+        width: 13px;
+        height: 0;
+        padding-top: 13px;
+        background-image: url(img/pagination.png);
+        background-position: 0 0;
+        float: left;
+        overflow: hidden;
+    }
+
+    .slidesjs-pagination li a.active,
+    .slidesjs-pagination li a:hover.active {
+        background-position: 0 -13px
+    }
+
+    .slidesjs-pagination li a:hover {
+        background-position: 0 -26px
+    }
+
+    #slides a:link,
+    #slides a:visited {
+        color: #333
+    }
+
+    #slides a:hover,
+    #slides a:active {
+        color: #9e2020
+    }
+
+    .navbar {
+        overflow: hidden
+    }
+</style>
+{%endblock%}
+
+{%block container%}
+<div class="container">
+    <div id="slides">
+        <img src="../static/slide-1.jpg" >
+        <img src="../static/slide-2.jpg" >
+        <img src="../static/slide-3.jpg" >
+        <img src="../static/slide-4.jpg" >
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="../static/jquery.slides.min.js"></script>
+
+<script>
+    $(function() {
+        $('#slides').slidesjs({
+            width: 940,
+            height: 528,
+            play: {
+                active: true,
+                auto: true,
+                interval: 4000,
+                swap: true
+            }
+        });
+    });
+</script>
+{%endblock%}

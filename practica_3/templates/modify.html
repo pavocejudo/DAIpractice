@@ -1,0 +1,32 @@
+{%extends 'index.html'%}
+{%block container%}
+{% macro render_field(field) %}
+<dt> {{ field.label }} </dt>
+<dd> {{ field(**kwargs)|safe }}
+{% if field.errors %}
+<ul class=errors>
+    {% for error in field.errors %}
+        <li>{{error}}</li>
+    {% endfor %}
+</ul>
+{%endif%}
+</dd>
+{%endmacro%}
+<form method=post action="/modify">
+    <dl>
+        {{ render_field(form.username,placeholder="name" ) }}
+        {{ render_field(form.second_name,placeholder = "second name") }}
+        {{ render_field(form.email, placeholder="email") }}
+        {{ render_field(form.adress, placeholder="adress") }}
+        {{ render_field(form.pay)}}
+        {{ render_field(form.VISA,placeholder="VISA") }}
+        {{ render_field(form.birthday) }}
+        {{ render_field(form.birthmoth) }}
+        {{ render_field(form.birthyear) }}
+        {{ render_field(form.password,placeholder="password")}}
+    </dl>
+    <input type="submit" value="Update">
+
+</form>
+
+{%endblock%}

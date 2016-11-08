@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="static/style.css" rel="stylesheet" type="text/css" />
+{%block slider%}{%endblock%}
+<title>Saxo web page - {% block title%}{%endblock%}</title>
+</head>
+
+<body>
+<div id="container">
+	<div id="header">
+		<h1>Saxo's web page</h1>
+	</div>
+	<div id="content">
+		<div id="left">
+			<ul>
+				<li id="nav-bg"><a class="link" href="/">Home</a></li>
+				<li id="nav-bg"><a class="link" href="gallery">Gallery</a></li>
+				<li id="nav-bg"><a class="link" href="contact">Contact us</a></li>
+				<li id="nav-bg"><a class="link" href="register">Register</a></li>
+				<li id="nav-bg">
+					{%if 'username' in session: %}
+						{%if session['inDB']%}
+						<li id="nav-bg"><a class="link" href="modify">Modify form</a></li>
+						{%endif%}
+						{% if session['historial']%}
+						<h3>Historial</h3>
+						<li id="nav-bg-historial"><a class="link" href="{{session['historial'][0]}}">{{session['historial'][0]}}</a></li>
+						<li id="nav-bg-historial"><a class="link" href="{{session['historial'][1]}}">{{session['historial'][1]}}</a></li>
+						<li id="nav-bg-historial"><a class="link" href="{{session['historial'][2]}}">{{session['historial'][2]}}</a></li>
+						{%endif%}
+						<p>Bienvenido {{ session['username'] }}</p>
+						<form action="/logout" method="post">
+							<p><input type="submit" value="Logout"/></p>
+						</form>
+					{% else %}
+					<form action="/login" method="post">
+						<p>Usuario:</p>
+						<p><input type="text" name="username"/></p>
+						<p>Contraseña:</p><p><input type="password" name="password" value=""></p>
+	                    <input type="submit" value="Login"/>
+	                </form>
+					{%endif%}
+				</li>
+			</ul>
+		</div>
+
+		<div id="right">
+			{% block container %}
+			<a href="#"><img src="../static/saxo.jpg" alt="time to party" width="100%"/></a>
+			{% endblock %}
+		</div>
+		<div class="clear"></div>
+		<div id="footer">
+			<p>&copy; Copyright Sergio. All rights reserved.</p>
+		</div>
+	</div>
+
+</div>
+</body>
+</html>
